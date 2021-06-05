@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="thymeleaf.org">
+
+<head>
+	<title>Registro de Producto</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background-color: antiquewhite;">
+	<div class="container">
+		<h1 style="text-align: center;">Registro de Producto</h1>
+	
+	<form th:action="@{/guardar}" th:object="${producto}" method="POST"
+		style="margin-left:45px; margin-right: 45px;">
+		<div class="form-row">
+		<div class="form-group col-md-6">
+			<label>Codigo:</label>
+			<input th:field="*{idproducto}" class="form-control" id="exampleInputEmail1" placeholder="P0000">
+		</div>
+		<div class="form-group col-md-6">
+			<label>Descripcion:</label>
+			<input th:field="*{descripcion}" class="form-control" id="exampleInputPassword1"
+				placeholder="Ingrese Producto">
+		</div>
+		</div>
+		<div class="form-row">
+		<div class="form-group col-md-6">
+			<label>Precio:</label>
+			<input th:field="*{precio}" class="form-control" id="exampleInputPassword1" placeholder="0">
+		</div>
+		<div class="form-group col-md-6">
+			<label>Stock:</label>
+			<input th:field="*{stock}" class="form-control" id="exampleInputPassword1" placeholder="0.0">
+		</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-4">
+				<label for="inputCategoria">Categoria:</label>
+				<select id="inputCategoria" class="form-control" th:field="*{idcategoria}">
+					<option th:value="-1" th:text="Seleccione...">Seleccione</option>
+					<option th:value="1" th:text="Bebidas"></option>
+					<option th:value="2" th:text="Lacteos"></option>
+					<option th:value="3" th:text="GranosYcereales"></option>
+					<option th:value="4" th:text="FrutasYverduras"></option>
+					<option th:value="5" th:text="Carnes"></option>
+					
+				</select>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputEstado">Estado:</label>
+				<input th:field="*{estado}" class="form-control" id="exampleInputPassword1" placeholder="Estado">
+				<!--<select id="inputEstado" class="form-control" th:field="*{estado}">
+					<option th:value="-1" th:text="Seleccione...">Seleccione</option>
+				</select>-->
+			</div>
+		
+		</div>	
+		
+			<button type="submit" class="btn btn-primary">Registrar</button>
+			
+
+	</form>
+	</div>
+</body>
+</html>
